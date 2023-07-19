@@ -1,8 +1,6 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router';
-</script>
-
-
+<!-- ---------------------------------------------------------------------- -->
+<!-- HTML                                                                   -->
+<!-- ---------------------------------------------------------------------- -->
 <template>
   <div class="container-fluid menu">
     <div class="row menu-row">
@@ -23,8 +21,18 @@ import { RouterLink, RouterView } from 'vue-router';
 </template>
 
 
-<style scoped>
+<!-- ---------------------------------------------------------------------- -->
+<!-- JavaScript                                                             -->
+<!-- ---------------------------------------------------------------------- -->
+<script setup>
+import { RouterLink, RouterView } from 'vue-router';
+</script>
 
+
+<!-- ---------------------------------------------------------------------- -->
+<!-- CSS                                                                    -->
+<!-- ---------------------------------------------------------------------- -->
+<style scoped>
 .menu {
     padding: 0;
     margin: 0;
@@ -103,5 +111,4 @@ import { RouterLink, RouterView } from 'vue-router';
     transform: translateX(0);
     opacity: 1;
 }
-
 </style>

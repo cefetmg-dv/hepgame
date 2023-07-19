@@ -11,7 +11,11 @@ const config = {
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap')
+      '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
+      '~hover': path.resolve(__dirname, 'node_modules/hover.css'),
+      '~front-matter': path.resolve(__dirname, 'node_modules/front-matter'),
+      '~marked': path.resolve(__dirname, 'node_modules/marked'),
+      '~dompurify': path.resolve(__dirname, 'node_modules/dompurify')
     }
   }
 };

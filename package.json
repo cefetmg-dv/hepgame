@@ -4,7 +4,12 @@
   "private": true,
   "description": "High Energy Physics - The Card Game é uma proposta didático-pedagógica para o ensino de física de partículas e altas energias.",
   "homepage": "https://cefetmg-dv.github.io/hepgame/",
-  "keywords": [ "ensino", "física", "jogo", "física de partículas" ],
+  "keywords": [
+    "ensino",
+    "física",
+    "jogo",
+    "física de partículas"
+  ],
   "contributors": [
     "André L. Maravilha <andre.maravilha@cefetmg.br> (https://andremaravilha.github.io/)",
     "Rafael Marcelino <rafaelmarcelinocs@cefetmg.br>"
@@ -19,6 +24,11 @@
   "dependencies": {
     "@popperjs/core": "^2.11.7",
     "bootstrap": "^5.2.3",
+    "buffer": "^6.0.3",
+    "dompurify": "^3.0.5",
+    "front-matter": "^4.0.2",
+    "hover.css": "^2.3.2",
+    "marked": "^5.1.1",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },
