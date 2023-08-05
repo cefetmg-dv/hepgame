@@ -1,29 +1,24 @@
-# hepgame
+# High Energy Physics (HEP) - The Card Game
 
-This template should help get you started developing with Vue 3 in Vite.
+**High Energy Physics - The Card Game** é uma proposta didático-pedagógica para o ensino de física de partículas e altas energias por meio de um jogo de cartas. Acesse o endereço [https://cefetmg-dv.github.io/hepgame](https://cefetmg-dv.github.io/hepgame) .
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Como executar o projeto
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Compilar e executar (hot-reload) o projetos para desenvolvimento
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Compilar o projeto para produção
 
 ```sh
 npm run build
 ```
+
+## Licença
+MIT
