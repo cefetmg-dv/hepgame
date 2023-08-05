@@ -21,6 +21,7 @@ const config = {
 };
 
 export default defineConfig(({ command, mode }) => {
+  console.log(`vite.config.js: command=${command} mode=${mode}`);
   if (command === 'serve') {
 
     // Development mode (vite dev)
