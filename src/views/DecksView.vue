@@ -3,6 +3,7 @@
 <!-- ---------------------------------------------------------------------- -->
 <template>
 
+  <BackToMenu/>
   <!-- Modal para exibir detalhes do card -->
   <div id="cardModal" class="modal" tabindex="-1">
     <div class="modal-dialog modal-lg modal-fullscreen-md-down modal-dialog-centered modal-dialog-scrollable">
@@ -22,7 +23,7 @@
                   <div class="col-12 mb-3">
                     <div class="hstack gap-3">
                       <span v-if="modal.card?.genio" class="badge text-bg-success">Gênio</span>
-                      <span v-for="tag of modal.card?.tags" class="badge text-bg-primary">{{ tag }}</span>
+                      <span v-for="(tag, index) in modal.card?.tags" :key="index" class="badge text-bg-primary">{{ tag }}</span>
                     </div>
                   </div>
                   <div class="col-12" v-html="modal.card?.descricao">
@@ -39,7 +40,7 @@
   <!-- Listagem dos cards -->
   <div class="container">
     <div class="row py-5 gx-5 gy-5">
-      <div v-for="card of cards" class="col-12 col-md-3">
+      <div v-for="(card, index) in cards" :key="index" class="col-12 col-md-3">
         <Card :cardId="card.id" @click="() => { exibirModal(card.id) }" class="deck-card hvr-grow"></Card>
       </div>
     </div>
@@ -56,12 +57,14 @@ import { RouterLink, RouterView } from 'vue-router';
 import Card from '@/components/Card.vue';
 import * as bootstrap from 'bootstrap';
 import cardUtils from '@/composables/card-utils.js';
+import BackToMenu from '../comuns/BackToMenu.vue';
 
 export default {
   components: {
     RouterLink,
     RouterView,
-    Card
+    Card,
+    BackToMenu
   },
   data() {
     return {

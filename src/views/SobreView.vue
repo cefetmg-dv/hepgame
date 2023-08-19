@@ -2,11 +2,11 @@
 <!-- HTML                                                                   -->
 <!-- ---------------------------------------------------------------------- -->
 <template>
+  <back-to-menu/>
   <div class="container-fluid">
     <div class="d-flex vh-100">
       <div class="m-auto text-center">
         <div>Sobre (em construção...)</div>
-        <RouterLink to="/" class="btn btn-secondary mt-3">VOLTAR</RouterLink>
       </div>
     </div>
   </div>
@@ -18,6 +18,7 @@
 <!-- ---------------------------------------------------------------------- -->
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
+import BackToMenu from '../comuns/BackToMenu.vue';
 </script>
 
 
