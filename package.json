@@ -30,7 +30,7 @@
     "hover.css": "^2.3.2",
     "marked": "^5.1.1",
     "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.1",

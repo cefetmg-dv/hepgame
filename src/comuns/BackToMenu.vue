@@ -2,23 +2,21 @@
 <!-- HTML                                                                   -->
 <!-- ---------------------------------------------------------------------- -->
 <template>
-  <back-to-menu/>
-  <div class="container-fluid">
-    <div class="d-flex vh-100">
-      <div class="m-auto text-center">
-        <div>Tutorial (em construção...)</div>
-      </div>
-    </div>
-  </div>
+    <nav class="navbar bg-body-tertiary">
+    <form class="container-fluid mt-2" >
+      <RouterLink to="/" class="btn btn-outline-success"
+        >VOLTAR</RouterLink
+      >
+    </form>
+  </nav>
 </template>
 
 
 <!-- ---------------------------------------------------------------------- -->
 <!-- JavaScript                                                             -->
 <!-- ---------------------------------------------------------------------- -->
-<script setup>
-import { RouterLink, RouterView } from 'vue-router';
-import BackToMenu from '../comuns/BackToMenu.vue';
+<script>
+import { RouterLink, RouterView } from "vue-router";
 </script>
 
 
