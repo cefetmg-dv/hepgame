@@ -18,7 +18,7 @@
 <!-- ---------------------------------------------------------------------- -->
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';
-import BackToMenu from '../comuns/BackToMenu.vue';
+import BackToMenu from '../components/BackToMenu.vue';
 </script>
 
 
