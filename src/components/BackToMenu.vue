@@ -3,7 +3,7 @@
 <!-- ---------------------------------------------------------------------- -->
 <template>
     <nav class="navbar bg-body-tertiary">
-    <form class="container-fluid mt-2" >
+    <form class="container-fluid" >
       <RouterLink to="/" class="btn btn-outline-success"
         >VOLTAR</RouterLink
       >
