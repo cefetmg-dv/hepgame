@@ -57,7 +57,7 @@ import { RouterLink, RouterView } from 'vue-router';
 import Card from '@/components/Card.vue';
 import * as bootstrap from 'bootstrap';
 import cardUtils from '@/composables/card-utils.js';
-import BackToMenu from '../comuns/BackToMenu.vue';
+import BackToMenu from '../components/BackToMenu.vue';
 
 export default {
   components: {
