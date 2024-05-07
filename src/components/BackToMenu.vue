@@ -3,10 +3,10 @@
 <!-- ---------------------------------------------------------------------- -->
 <template>
     <nav class="navbar bg-body-tertiary">
-    <form class="container-fluid mt-2" >
-      <RouterLink to="/" class="btn btn-outline-success"
-        >VOLTAR</RouterLink
-      >
+    <form class="container-fluid mt-2">
+      <RouterLink to="/" class="btn btn-outline-success">
+        VOLTAR
+      </RouterLink>
     </form>
   </nav>
 </template>
