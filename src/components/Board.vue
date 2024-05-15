@@ -8,11 +8,11 @@
     <div class="row">
       <div class= "col align-self-center">
         <div class= "row mb-5">
-          <Card :cardId="6" class="deck-card-1"  ></Card>
+          <Carta :carta="6" class="deck-card-1"  ></Carta>
         </div>
 
         <div class= "row">
-          <Card :cardId="6" class="deck-card-2"  ></Card>
+          <Carta :carta="6" class="deck-card-2"  ></Carta>
         </div>
       </div>
 
@@ -20,27 +20,27 @@
 
         <div class="col-10">
           <div class="row justify-content-center mb-2">
-            <div v-for="(card, index) in player1.cards" :key="index" class="col-1">
-                    <Card :cardId="card.id" class="deck-card-1"></Card>
+            <div v-for="(carta, idx) in jogador_1.cartas" :key="idx" class="col-1">
+                    <Carta :carta="carta.id" class="deck-card-1"></Carta>
                 </div>
           </div>
           <div class="row justify-content-center mb-3">
-            <div v-for="(card, index) in player1.cards" :key="index" class="col-2">
-                    <Card :cardId="card.id" class="deck-card-1"></Card>
+            <div v-for="(carta, idx) in jogador_1.cartas" :key="idx" class="col-2">
+                    <Carta :carta="carta.id" class="deck-card-1"></Carta>
                 </div>
           </div>
 
             <!-- Aqui ficam posicionados a mão e o campo do jogador 2-->
 
           <div class="row justify-content-center mb-2">
-            <div v-for="(card, index) in player2.cards" :key="index" class="col-2">
-                    <Card :cardId="card.id" class="deck-card"></Card>
-                </div>
+            <div v-for="(carta, idx) in jogador_2.cartas" :key="idx" class="col-2">
+              <Carta :carta="carta.id" class="deck-card"></Carta>
+            </div>
           </div>
           <div class="row justify-content-center">
-            <div v-for="(card, index) in player2.cards" :key="index" class="col-1">
-                    <Card :cardId="card.id" class="deck-card"></Card>
-                </div>
+            <div v-for="(carta, idx) in jogador_2.cartas" :key="index" class="col-1">
+              <Carta :carta="carta.id" class="deck-card"></Carta>
+            </div>
           </div>
         </div>
       
@@ -48,10 +48,10 @@
 
         <div class= "col align-self-center">
           <div class= "row mb-5">
-            <Card :cardId="6" class="genio-card-1"></Card>
+            <Carta :carta="6" class="genio-card-1"></Carta>
           </div>
           <div class= "row ">
-                <Card :cardId="6" class="genio-card-2 "  ></Card>
+            <Carta :carta="6" class="genio-card-2 "  ></Carta>
           </div>
         </div>
       
@@ -65,47 +65,45 @@
 <!-- JavaScript                                                             -->
 <!-- ---------------------------------------------------------------------- -->
 <script>
-import cardUtils from '@/composables/card-utils.js';
-import Card from '@/components/Card.vue';
+import hepCartas from '@/lib/hep-cartas.js';
+import Carta from '@/components/Carta.vue';
 
 export default {
   components: {
-    Card
+    Carta
   },
   data() {
     return {
-        player1: {
-            name: 'Player 1',
-            cards: [],
+        jogador_1: {
+            nome: 'Jogador 1',
+            cartas: [],
         },
-        player2: {
-            name: 'Player 2',
-            cards: [],
-        },
-      //
+        jogador_2: {
+            nome: 'Jogador 2',
+            cartas: [],
+        }
     };
   },
   created() {
-  
-    this.player1.cards.push(cardUtils.getCard(1));
-    this.player1.cards.push(cardUtils.getCard(2));
-    this.player1.cards.push(cardUtils.getCard(3));
-    this.player1.cards.push(cardUtils.getCard(4));
-    this.player1.cards.push(cardUtils.getCard(5));
+    this.jogador_1.cartas.push(hepCartas.buscarCartaPorId(1));
+    this.jogador_1.cartas.push(hepCartas.buscarCartaPorId(2));
+    this.jogador_1.cartas.push(hepCartas.buscarCartaPorId(3));
+    this.jogador_1.cartas.push(hepCartas.buscarCartaPorId(4));
+    this.jogador_1.cartas.push(hepCartas.buscarCartaPorId(5));
 
-    this.player2.cards.push(cardUtils.getCard(1));
-    this.player2.cards.push(cardUtils.getCard(2));
-    this.player2.cards.push(cardUtils.getCard(3));
-    this.player2.cards.push(cardUtils.getCard(4));
-    this.player2.cards.push(cardUtils.getCard(5));
+    this.jogador_2.cartas.push(hepCartas.buscarCartaPorId(1));
+    this.jogador_2.cartas.push(hepCartas.buscarCartaPorId(2));
+    this.jogador_2.cartas.push(hepCartas.buscarCartaPorId(3));
+    this.jogador_2.cartas.push(hepCartas.buscarCartaPorId(4));
+    this.jogador_2.cartas.push(hepCartas.buscarCartaPorId(5));
   },
   mounted() {
     // TODO
   },
   methods: {
     //função para preencher uma mão 
-    preencher(){
-      this.player1.cards.push(cardUtils.getCard(this.gerarNumeroAleatorio(1,10)));
+    preencher() {
+      this.jogador_1.cartas.push(hepCartas.buscarCartaPorId(this.gerarNumeroAleatorio(1,10)));
     },
     gerarNumeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
