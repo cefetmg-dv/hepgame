@@ -6,20 +6,20 @@
         <div class="col-12">
           <div class="row justify-content-center">
             <div class="col-1">
-              <Card :cardId="6" class="deck-card"></Card>
+              <Carta :carta="6" class="deck-card"></Carta>
             </div>
             <div class="col-1">
-              <Card :cardId="7" class="deck-card"></Card>
+              <Carta :carta="7" class="deck-card"></Carta>
             </div>
             <div class="col-1">
-              <Card :cardId="8" class="deck-card"></Card>
+              <Carta :carta="8" class="deck-card"></Carta>
             </div>
           </div>
         </div>
         <div class="col-12">
             <div class="row justify-content-center">
-                <div v-for="(card, index) in player1.cards" :key="index" class="col-1">
-                    <Card :cardId="card.id" class="deck-card"></Card>
+                <div v-for="(carta, idx) in jogador_1.cartas" :key="index" class="col-1">
+                    <Carta :carta="carta.id" class="deck-card"></Carta>
                 </div>
             </div>
         </div>
@@ -31,28 +31,28 @@
 <!-- JavaScript                                                             -->
 <!-- ---------------------------------------------------------------------- -->
 <script>
-import cardUtils from '@/composables/card-utils.js';
-import Card from '@/components/Card.vue';
+import hepCartas from '@/lib/hep-cartas.js';
+import Carta from '@/components/Carta.vue';
 
 export default {
   components: {
-    Card
+    Carta
   },
   data() {
     return {
-        player1: {
-            name: 'Player 1',
-            cards: [],
+        jogador_1: {
+            nome: 'Jogador 1',
+            cartas: [],
         },
       //
     };
   },
   created() {
-    this.player1.cards.push(cardUtils.getCard(1));
-    this.player1.cards.push(cardUtils.getCard(2));
-    this.player1.cards.push(cardUtils.getCard(3));
-    this.player1.cards.push(cardUtils.getCard(4));
-    this.player1.cards.push(cardUtils.getCard(5));
+    this.jogador_1.cartas.push(hepCartas.buscarCartaPorId(1));
+    this.jogador_1.cartas.push(hepCartas.buscarCartaPorId(2));
+    this.jogador_1.cartas.push(hepCartas.buscarCartaPorId(3));
+    this.jogador_1.cartas.push(hepCartas.buscarCartaPorId(4));
+    this.jogador_1.cartas.push(hepCartas.buscarCartaPorId(5));
   },
   mounted() {
     // TODO
