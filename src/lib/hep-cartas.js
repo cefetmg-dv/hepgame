@@ -4,8 +4,7 @@ import DOMPurify from '~dompurify';
 
 
 const ARQUIVOS = import.meta.glob(`@/assets/cards/*.md`, { as: 'raw', eager: true });
-const URL_IMAGEM_INDEFINIDA = new URL(`@/assets/card-noimage.png`, import.meta.url).href;
-const URL_IMAGENS = new URL(`@/assets/cards/imagens`, import.meta.url).href;
+//const IMAGEM_INDEFINIDA = new URL('/src/assets/card-noimage.png', import.meta.url);
 
 // Arrays que armazenam os dados das cartas
 const CARTAS = [];
@@ -24,11 +23,11 @@ for (let key of Object.keys(ARQUIVOS)) {
 
     // Define a URL da imagem da carta
     if (carta.imagem) {
-        //let arquivo = `${carta.id}.png`;
         let arquivo = carta.imagem.substring(0, carta.imagem.lastIndexOf('.')) + '.png';
-        carta.imagem = `${URL_IMAGENS}/${arquivo}`;
+        carta.imagem = new URL(`/src/assets/cards/imagens/${arquivo}`, import.meta.url);
     } else {
-        carta.imagem = URL_IMAGEM_INDEFINIDA;
+        //carta.imagem = IMAGEM_INDEFINIDA;
+        carta.imagem = '';
     }
 
     // Adiciona a carta ao array de cartas

@@ -31,7 +31,7 @@
     "dompurify": "^3.0.5",
     "front-matter": "^4.0.2",
     "hover.css": "^2.3.2",
-    "marked": "^5.1.1",
+    "marked": "^12.0.2",
     "vue": "^3.2.47",
     "vue-router": "^4.0.13"
   },

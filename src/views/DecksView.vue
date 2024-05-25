@@ -76,7 +76,6 @@ export default {
   },
   mounted() {
     this.modal.elemento = new bootstrap.Modal(document.querySelector('#modal-carta'));
-    console.log(this.cartas);
   },
   methods: {
     exibirModal(id) {
