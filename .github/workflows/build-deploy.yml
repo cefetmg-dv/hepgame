@@ -1,17 +1,15 @@
 name: Build and Deploy
 
 on:
-  # Runs on pushes targeting the main branch
-  push:
-    branches:
-      - main
-
+  # # Runs on pushes targeting the main branch
+  # push:
+  #   branches:
+  #     - main
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # Sets the GITHUB_TOKEN permissions to allow deployment to GitHub Pages
 permissions:
-  contents: write
   pages: write
   id-token: write
 
@@ -21,55 +19,29 @@ concurrency:
     cancel-in-progress: true
 
 jobs:
-  # Single deploy job since we're just deploying
   build-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-
-      - name: Checkout 🛎️
-        uses: actions/checkout@v3
-
-      #- name: Rename image files to lowercase characters only 🔧
-      #  run: |
-      #    sudo apt-get install -y rename
-      #    find ./src/assets/cards/imagens/ -depth -exec rename 's/(.*)\/([^\/]*)/$1\/\L$2/' {} \;
-        
-      - name: Resize images for production 🔧
-        run: |
-          sudo apt-get install -y imagemagick
-          mogrify -resize 600 -format png ./src/assets/cards/imagens/*[.png,.jpg,.jpeg,.PNG,.JPG,.JPEG]
-
-      - name: Remove unnecessary files 🔧
-        run: |
-          rm -f ./src/assets/cards/imagens/*.jpg
-          rm -f ./src/assets/cards/imagens/*.jpeg
-          rm -f ./src/assets/cards/imagens/*.PNG
-          rm -f ./src/assets/cards/imagens/*.JPG
-          rm -f ./src/assets/cards/imagens/*.JPEG
-
-      - name: Set up Node.js 🔧
-        uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
-
-      - name: Install project dependencies 🔧
-        run: npm install
-
-      - name: Build project 🔧
-        run: npm run build
-
-      - name: Setup GitHub Pages 🔧
-        uses: actions/configure-pages@v3
-
-      - name: Upload artifact 🔧
-        uses: actions/upload-pages-artifact@v1
+      - name: Install dependencies and build project
+        run: |
+          npm install
+          npm run build
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
-
-      - name: Deploy to GitHub Pages 🚀
+      - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4

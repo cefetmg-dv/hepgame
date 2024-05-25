@@ -40,7 +40,7 @@
   <!-- Listagem dos cards -->
   <div class="container">
     <div class="row py-5 gx-5 gy-5">
-      <div v-for="(carta, idx) in cartas" :key="idx" class="col-12 col-md-3">
+      <div v-for="(carta, idx) in cartas" :key="idx" class="col-12 col-md-2">
         <Carta :carta="carta.id" @click="() => { exibirModal(carta.id) }" class="hep-carta hvr-grow"></Carta>
       </div>
     </div>
@@ -53,22 +53,19 @@
 <!-- JavaScript                                                             -->
 <!-- ---------------------------------------------------------------------- -->
 <script>
-import { RouterLink, RouterView } from 'vue-router';
+import HEPCartas from '@/lib/hep-cartas.js';
 import Carta from '@/components/Carta.vue';
 import BackToMenu from '@/components/BackToMenu.vue'
-import * as bootstrap from 'bootstrap';
-import hepCartas from '@/lib/hep-cartas.js';
+import * as bootstrap from '~bootstrap';
 
 export default {
   components: {
-    RouterLink,
-    RouterView,
     Carta,
     BackToMenu
   },
   data() {
     return {
-      cartas: hepCartas.buscarCartas(),
+      cartas: HEPCartas.buscarCartas(),
       modal: {
         elemento: null,
         carta: null
@@ -79,10 +76,11 @@ export default {
   },
   mounted() {
     this.modal.elemento = new bootstrap.Modal(document.querySelector('#modal-carta'));
+    console.log(this.cartas);
   },
   methods: {
     exibirModal(id) {
-      this.modal.carta = hepCartas.buscarCartaPorId(id);
+      this.modal.carta = HEPCartas.buscarCartaPorId(id);
       this.modal.elemento.show();
     }
   }

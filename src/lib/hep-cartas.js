@@ -1,11 +1,11 @@
 import fm from 'front-matter';
-import { marked } from 'marked';
-import DOMPurify from 'dompurify';
+import { marked } from '~marked';
+import DOMPurify from '~dompurify';
 
 
-const ARQUIVOS = import.meta.glob(`/src/assets/cards/*.md`, { as: 'raw', eager: true });
-const URL_CARTA_SEM_IMAGEM = new URL(`/src/assets/card-noimage.png`, import.meta.url).href;
-const PATH_IMAGENS = '/src/assets/cards/imagens';
+const ARQUIVOS = import.meta.glob(`@/assets/cards/*.md`, { as: 'raw', eager: true });
+const URL_IMAGEM_INDEFINIDA = new URL(`@/assets/card-noimage.png`, import.meta.url).href;
+const URL_IMAGENS = new URL(`@/assets/cards/imagens`, import.meta.url).href;
 
 // Arrays que armazenam os dados das cartas
 const CARTAS = [];
@@ -18,18 +18,17 @@ for (let key of Object.keys(ARQUIVOS)) {
     const { attributes, body } = fm(ARQUIVOS[key]);
     const carta = {
         ...attributes,
+        id: key.substring(key.lastIndexOf('/') + 1, key.lastIndexOf('.')),
         descricao: DOMPurify.sanitize(marked.parse(body))
     };
 
     // Define a URL da imagem da carta
     if (carta.imagem) {
-
-        // Correção temporária até que os arquivos .md das cartas sejam ajustados
-        carta.imagem = carta.imagem.substring(0, carta.imagem.lastIndexOf('.'));
-
-        carta.imagem = new URL(`${PATH_IMAGENS}/${carta.imagem}.png`, import.meta.url).href;
+        //let arquivo = `${carta.id}.png`;
+        let arquivo = carta.imagem.substring(0, carta.imagem.lastIndexOf('.')) + '.png';
+        carta.imagem = `${URL_IMAGENS}/${arquivo}`;
     } else {
-        carta.imagem = URL_CARTA_SEM_IMAGEM;
+        carta.imagem = URL_IMAGEM_INDEFINIDA;
     }
 
     // Adiciona a carta ao array de cartas
@@ -66,10 +65,14 @@ export default {
     /**
      * Retorna um array com as cartas do deck de um gênio específico.
      * @param {String} genio Nome do deck/gênio.
+     * @param {Boolean} incluirGenio Se true, inclui a carta do gênio no array.
      * @returns {Array} Retorna um array com as cartas do deck.
      */
-    buscarCartasPorGenio(genio) {
-        return CARTAS.filter(carta => carta.deck === genio);
+    buscarCartasPorGenio(genio, incluirGenio = true) {
+        if (incluirGenio) {
+            return CARTAS.filter(carta => carta.deck === genio);
+        }
+        return CARTAS.filter(carta => carta.deck === genio || carta.genio !== genio);
     },
 
     /**
@@ -78,6 +81,9 @@ export default {
      * @returns {Object} Retorna um objeto com os dados da carta.
      */
     buscarCartaPorId(id) {
+        if (typeof id === 'number') {
+            return CARTAS[id];
+        }
         return CARTAS.find(carta => carta.id === id);
     }
 
