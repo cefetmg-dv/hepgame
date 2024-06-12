@@ -2,62 +2,78 @@
 <!-- HTML                                                                   -->
 <!-- ---------------------------------------------------------------------- -->
 <template>
-  
-<!-- Aqui ficam posicionados os decks do jogador 1 e 2 -->
-  <div class="container">
-    <div class="row">
-      <div class= "col align-self-center">
-        <div class= "row mb-5">
-          <Carta :carta="6" class="deck-card-1"  ></Carta>
-        </div>
+  <!--Primeira linha de cartas do jogador 2-->
+    <div class="row justify-content-center">
+      <div class="col-1 align-self-center">
+        <Carta :carta="6" class="deck-card-2"></Carta>
+      </div>
 
-        <div class= "row">
-          <Carta :carta="6" class="deck-card-2"  ></Carta>
+      <div class="col-10">
+        <div class="row justify-content-center">
+          <div v-for="(carta, idx) in jogador_1.cartas" :key="idx" class="col-1">
+            <Carta :carta="carta.id" class="deck-card-2"></Carta>
+          </div>
         </div>
       </div>
 
-          <!-- Aqui ficam posicionados a mão e o campo do jogador 1 -->
+      <div class="col-1 align-self-center">
+        <Carta :carta="6" class="deck-card-2"></Carta>
+      </div>
 
-        <div class="col-10">
-          <div class="row justify-content-center mb-2">
-            <div v-for="(carta, idx) in jogador_1.cartas" :key="idx" class="col-1">
-                    <Carta :carta="carta.id" class="deck-card-1"></Carta>
-                </div>
-          </div>
-          <div class="row justify-content-center mb-3">
-            <div v-for="(carta, idx) in jogador_1.cartas" :key="idx" class="col-2">
-                    <Carta :carta="carta.id" class="deck-card-1"></Carta>
-                </div>
-          </div>
-
-            <!-- Aqui ficam posicionados a mão e o campo do jogador 2-->
-
-          <div class="row justify-content-center mb-2">
-            <div v-for="(carta, idx) in jogador_2.cartas" :key="idx" class="col-2">
-              <Carta :carta="carta.id" class="deck-card"></Carta>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div v-for="(carta, idx) in jogador_2.cartas" :key="index" class="col-1">
-              <Carta :carta="carta.id" class="deck-card"></Carta>
-            </div>
-          </div>
-        </div>
-      
-<!-- Aqui ficam posicionados os gênios do jogador 1 e 2 -->
-
-        <div class= "col align-self-center">
-          <div class= "row mb-5">
-            <Carta :carta="6" class="genio-card-1"></Carta>
-          </div>
-          <div class= "row ">
-            <Carta :carta="6" class="genio-card-2 "  ></Carta>
-          </div>
-        </div>
-      
-        
     </div>
-  </div>
+    <!-- Segunda linha de cartas do jogador 1 e 2-->
+    <div class="row justify-content-center">
+      <div class="col-1 align-self-center mt-3 ">
+        <Carta :carta="6" class="deck-card-2"></Carta>
+      </div>
+      <div class="col-10">
+        <div class="row row justify-content-center">
+          <div class="col-8">
+            <div class="row justify-content-center">
+              <div v-for="(carta, idx) in jogador_1.cartas" :key="idx" class="col-2">
+                <Carta :carta="carta.id" class="deck-card-2"></Carta>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-1"></div>
+
+      <div class="col-1 align-self-center mt-3">
+        <Carta :carta="6" class="deck-card-1"></Carta>
+      </div>
+      <div class="col-10">
+        <div class="row justify-content-center mt-2">
+          <div class="col-8">
+            <div class="row justify-content-center">
+              <div v-for="(carta, idx) in jogador_2.cartas" :key="idx" class="col-2">
+                <Carta :carta="carta.id" class="deck-card-1"></Carta>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-1"></div>
+    </div>
+
+     <!-- Terceira linha de cartas do jogador 2-->
+    <div class="row justify-content-center">
+      <div class="col-1 align-self-center mt-3">
+        <Carta :carta="6" class="deck-card-1"></Carta>
+      </div>
+
+      <div class="col-10">
+        <div class="row justify-content-center mt-3">
+          <div v-for="(carta, idx) in jogador_2.cartas" :key="idx" class="col-1">
+            <Carta :carta="carta.id" class="deck-card-1"></Carta>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-1 align-self-center">
+        <Carta :carta="6" class="deck-card-1"></Carta>
+      </div>
+    </div>
 </template>
 
 
@@ -74,14 +90,14 @@ export default {
   },
   data() {
     return {
-        jogador_1: {
-            nome: 'Jogador 1',
-            cartas: [],
-        },
-        jogador_2: {
-            nome: 'Jogador 2',
-            cartas: [],
-        }
+      jogador_1: {
+        nome: 'Jogador 1',
+        cartas: [],
+      },
+      jogador_2: {
+        nome: 'Jogador 2',
+        cartas: [],
+      }
     };
   },
   created() {
@@ -101,13 +117,6 @@ export default {
     // TODO
   },
   methods: {
-    //função para preencher uma mão 
-    preencher() {
-      this.jogador_1.cartas.push(hepCartas.buscarCartaPorId(this.gerarNumeroAleatorio(1,10)));
-    },
-    gerarNumeroAleatorio(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
   }
 };
 </script>
@@ -117,10 +126,4 @@ export default {
 <!-- CSS                                                                    -->
 <!-- ---------------------------------------------------------------------- -->
 <style scoped>
-.deck-card-1{
-  transform: rotate(180deg);
-}
-.genio-card-1{
-  transform: rotate(180deg);
-}
 </style>
