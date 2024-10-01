@@ -2,6 +2,7 @@
 <!-- HTML                                                                   -->
 <!-- ---------------------------------------------------------------------- -->
 <template>
+  
   <!--Primeira linha de cartas do jogador 2-->
     <div class="row justify-content-center">
       <div class="col-1 align-self-center">
