@@ -3,61 +3,106 @@
 <!-- ---------------------------------------------------------------------- -->
 <template>
   
-<!-- Aqui ficam posicionados os decks do jogador 1 e 2 -->
-  <div class="container">
-    <div class="row">
-      <div class= "col align-self-center">
-        <div class= "row mb-5">
-          <Carta :carta="6" class="deck-card-1"  ></Carta>
+  <!--Primeira linha de cartas do jogador 2-->
+    <div class="row justify-content-center">
+      <div class="col-1 align-self-center">
+        <div class="row">
+          <div class="col-10">
+            <Carta :carta="6" class="deck-card-2"></Carta>
+          </div>
         </div>
+       
+      </div>
 
-        <div class= "row">
-          <Carta :carta="6" class="deck-card-2"  ></Carta>
+      <div class="col-10">
+        <div class="row justify-content-center">
+          <div v-for="(carta, idx) in jogador_1.cartas" :key="idx" class="col-1">
+            <Carta :carta="carta.id" class="deck-card-2"></Carta>
+          </div>
         </div>
       </div>
 
-          <!-- Aqui ficam posicionados a mão e o campo do jogador 1 -->
-
-        <div class="col-10">
-          <div class="row justify-content-center mb-2">
-            <div v-for="(carta, idx) in jogador_1.cartas" :key="idx" class="col-1">
-                    <Carta :carta="carta.id" class="deck-card-1"></Carta>
-                </div>
-          </div>
-          <div class="row justify-content-center mb-3">
-            <div v-for="(carta, idx) in jogador_1.cartas" :key="idx" class="col-2">
-                    <Carta :carta="carta.id" class="deck-card-1"></Carta>
-                </div>
-          </div>
-
-            <!-- Aqui ficam posicionados a mão e o campo do jogador 2-->
-
-          <div class="row justify-content-center mb-2">
-            <div v-for="(carta, idx) in jogador_2.cartas" :key="idx" class="col-2">
-              <Carta :carta="carta.id" class="deck-card"></Carta>
-            </div>
-          </div>
-          <div class="row justify-content-center">
-            <div v-for="(carta, idx) in jogador_2.cartas" :key="index" class="col-1">
-              <Carta :carta="carta.id" class="deck-card"></Carta>
-            </div>
+      <div class="col-1 align-self-center">
+        <div class="row">
+          <div class="col-10">
+            <Carta :carta="6" class="deck-card-2"></Carta>
           </div>
         </div>
-      
-<!-- Aqui ficam posicionados os gênios do jogador 1 e 2 -->
+      </div>
 
-        <div class= "col align-self-center">
-          <div class= "row mb-5">
-            <Carta :carta="6" class="genio-card-1"></Carta>
-          </div>
-          <div class= "row ">
-            <Carta :carta="6" class="genio-card-2 "  ></Carta>
-          </div>
-        </div>
-      
-        
     </div>
-  </div>
+    <!-- Segunda linha de cartas do jogador 1 e 2-->
+    <div class="row justify-content-center mt-5">
+      <div class="col-1 align-self-center mt-3 ">
+        <div class="card">
+          <div class="border"></div>
+          <Carta :carta="6" class="genio"></Carta>
+        </div>
+        
+      </div>
+
+      <div class="col-10">
+        <div class="row row justify-content-center">
+          <div class="col-8">
+            <div class="row justify-content-center">
+              <div v-for="(carta, idx) in jogador_1.cartas" :key="idx" class="col-2">
+                <Carta :carta="carta.id" class="deck-card-2"></Carta>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-1"></div>
+
+      <div class="col-1 align-self-center mt-3">
+        <div class="card">
+          <div class="border">
+          </div>
+          <Carta :carta="6" class="genio"></Carta>
+        </div>
+        
+      </div>
+      <div class="col-10">
+        <div class="row justify-content-center mt-2">
+          <div class="col-8">
+            <div class="row justify-content-center">
+              <div v-for="(carta, idx) in jogador_2.cartas" :key="idx" class="col-2">
+                <Carta :carta="carta.id" class="deck-card-1"></Carta>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-1"></div>
+    </div>
+
+     <!-- Terceira linha de cartas do jogador 2-->
+    <div class="row justify-content-center mt-5">
+      <div class="col-1 align-self-center mt-3">
+        <div class="row">
+          <div class="col-10">
+            <Carta :carta="6" class="deck-card-1"></Carta>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-10">
+        <div class="row justify-content-center mt-3">
+          <div v-for="(carta, idx) in jogador_2.cartas" :key="idx" class="col-1">
+            <Carta :carta="carta.id" class="deck-card-1"></Carta>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-1 align-self-center">
+        <div class="row">
+          <div class="col-10">
+            <Carta :carta="6" class="deck-card-1"></Carta>
+          </div>
+        </div>
+      </div>
+    </div>
 </template>
 
 
@@ -74,14 +119,14 @@ export default {
   },
   data() {
     return {
-        jogador_1: {
-            nome: 'Jogador 1',
-            cartas: [],
-        },
-        jogador_2: {
-            nome: 'Jogador 2',
-            cartas: [],
-        }
+      jogador_1: {
+        nome: 'Jogador 1',
+        cartas: [],
+      },
+      jogador_2: {
+        nome: 'Jogador 2',
+        cartas: [],
+      }
     };
   },
   created() {
@@ -101,13 +146,6 @@ export default {
     // TODO
   },
   methods: {
-    //função para preencher uma mão 
-    preencher() {
-      this.jogador_1.cartas.push(hepCartas.buscarCartaPorId(this.gerarNumeroAleatorio(1,10)));
-    },
-    gerarNumeroAleatorio(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
   }
 };
 </script>
@@ -117,10 +155,52 @@ export default {
 <!-- CSS                                                                    -->
 <!-- ---------------------------------------------------------------------- -->
 <style scoped>
-.deck-card-1{
-  transform: rotate(180deg);
+.deck-card-2{
+  border: solid 1px rgb(250, 82, 82);
+  border-radius: 7px;
 }
-.genio-card-1{
-  transform: rotate(180deg);
+.deck-card-1{
+  border: solid 1px rgb(123, 123, 243);
+  border-radius: 7px;
+}
+
+.border{
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from 0deg,white, rgb(214, 19, 201), white, rgb(216, 13, 231));
+}
+
+.border::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  top:50%;
+  left: 50%;
+  min-width: 200%;
+  min-height: 200%;
+  aspect-ratio: 1/1;
+  background: conic-gradient(from 0deg,white, rgb(214, 19, 201), white, rgb(216, 13, 231));
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: rotate 5s linear infinite;
+  filter: blur(5px);
+}
+.card{
+  --border-width: 4px;
+  position: relative;
+  display: inline-block;
+  padding: var(--border-width);
+  overflow: hidden;
+  background-color: rgb(54, 51, 51);
+  
+}
+.genio{
+  position: relative;
+  
+}
+
+@keyframes rotate{
+  to{
+    transform:  translate(-50%, -50%) rotate(360deg);
+  }
 }
 </style>

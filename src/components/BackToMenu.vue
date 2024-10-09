@@ -24,4 +24,5 @@ import { RouterLink, RouterView } from "vue-router";
 <!-- CSS                                                                    -->
 <!-- ---------------------------------------------------------------------- -->
 <style scoped>
+
 </style>
